@@ -4,6 +4,7 @@
  */
 package entity;
 
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -149,11 +150,17 @@ public class ListaProductos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBaddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBaddActionPerformed
+       try{
         String nombre = this.jTFinNombre.getText();
         String categoria = this.jCBcategoria.getSelectedItem().toString();
         Double precio = (double) (Integer.parseInt(this.jTFinPrecio.getText()));
         Productos a = new Productos(nombre,categoria,precio);
         cargarDatos(a);
+       }catch(NumberFormatException ex){
+           JOptionPane.showMessageDialog(this, "Error al ingresar datos");
+       }catch(Exception e){
+           JOptionPane.showMessageDialog(this, "Ha ocurrido un error.");
+       }
     }//GEN-LAST:event_jBaddActionPerformed
 
     private void jCBcategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBcategoriaActionPerformed
